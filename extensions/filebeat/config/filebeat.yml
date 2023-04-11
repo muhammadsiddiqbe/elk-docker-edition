@@ -1,0 +1,34 @@
+## Filebeat configuration
+## https://github.com/elastic/beats/blob/7.17/deploy/docker/filebeat.docker.yml
+#
+
+name: filebeat-my
+
+
+filebeat.inputs:
+- type: log
+  paths:
+    - /usr/share/filebeat/logs/operations.log
+  #json.message_key: message
+  #json.keys_under_root: true
+  #json.add_error_key: true
+
+
+monitoring:
+  enabled: true
+  elasticsearch:
+    username: elastic
+    password: changeme
+
+output.elasticsearch:
+  hosts: [ http://elasticsearch:9200 ]
+  username: elastic
+  password: changeme
+
+## HTTP endpoint for health checking
+## https://www.elastic.co/guide/en/beats/filebeat/7.17/http-endpoint.html
+#
+
+http:
+  enabled: true
+  host: 0.0.0.0
