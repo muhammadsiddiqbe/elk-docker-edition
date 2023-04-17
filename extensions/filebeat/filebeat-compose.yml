@@ -17,6 +17,7 @@ services:
     volumes:
       - ./extensions/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,Z
       - ./extensions/filebeat/logs/:/usr/share/filebeat/logs
+      - /var/log/schoolsystem/test:/var/log/schoolsystem/test
       - type: bind
         source: /var/lib/docker/containers
         target: /var/lib/docker/containers
