@@ -5,9 +5,7 @@ filebeat.modules:
     access:
       enabled: true
       var.paths: ["/var/log/nginx/access.log*"]
-    error:
-      enabled: true
-      var.paths: ["/var/log/nginx/error.log*"]
+
 
 processors:
   - decode_json_fields:
