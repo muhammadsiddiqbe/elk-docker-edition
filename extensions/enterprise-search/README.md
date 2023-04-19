@@ -79,7 +79,7 @@ Enterprise Search home page.
 Enterprise Search is configured on first boot with the following default credentials:
 
 * user: *enterprise_search*
-* password: *elk4565*
+* password: *changeme*
 
 ## Security
 
