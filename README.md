@@ -11,7 +11,7 @@ the visualization power of Kibana.
 
 ![Animated demo](https://user-images.githubusercontent.com/3299086/155972072-0c89d6db-707a-47a1-818b-5f976565f95a.gif)
 
-> **Note**  
+> **Note**
 > [Platinum][subscriptions] features are enabled by default for a [trial][license-mngmt] duration of **30 days**. After
 > this evaluation period, you will retain access to all the free features included in the Open Basic license seamlessly,
 > without manual intervention required, and without losing any data. Refer to the [How to disable paid
@@ -83,12 +83,12 @@ own_. [sherifabdlnaby/elastdocker][elastdocker] is one example among others of p
 * [Docker Compose][compose-install] version **1.26.0** or newer (including [Compose V2][compose-v2])
 * 1.5 GB of RAM
 
-> **Warning**  
+> **Warning**
 > While Compose versions between **1.22.0** and **1.25.5** can technically run this stack as well, these versions have a
 > [known issue](https://github.com/deviantony/docker-elk/pull/678#issuecomment-1055555368) which prevents them from
 > parsing quoted values properly inside `.env` files.
 
-> **Note**  
+> **Note**
 > Especially on Linux, make sure your user has the [required permissions][linux-postinstall] to interact with the Docker
 > daemon.
 
@@ -101,7 +101,7 @@ By default, the stack exposes the following ports:
 * 9300: Elasticsearch TCP transport
 * 5601: Kibana
 
-> **Warning**  
+> **Warning**
 > Elasticsearch's [bootstrap checks][bootstrap-checks] were purposely disabled to facilitate the setup of the Elastic
 > stack in development environments. For production setups, we recommend users to set up their host according to the
 > instructions from the Elasticsearch documentation: [Important System Configuration][es-sys-config].
@@ -121,7 +121,7 @@ instructions from the [documentation][mac-filesharing] to add more locations.
 
 ## Usage
 
-> **Warning**  
+> **Warning**
 > You must rebuild the stack images with `docker-compose build` whenever you switch branch or update the
 > [version](#version-selection) of an already existing stack.
 
@@ -139,18 +139,18 @@ Then, start the stack components locally with Docker Compose:
 docker-compose up
 ```
 
-> **Note**  
+> **Note**
 > You can also run all services in the background (detached mode) by appending the `-d` flag to the above command.
 
 Give Kibana about a minute to initialize, then access the Kibana web UI by opening <http://localhost:5601> in a web
 browser and use the following (default) credentials to log in:
 
-* user: *elastic*
-* password: *changeme*
+* user: _elastic_
+* password: _elk4565_
 
-> **Note**  
+> **Note**
 > Upon the initial startup, the `elastic`, `logstash_internal` and `kibana_system` Elasticsearch users are intialized
-> with the values of the passwords defined in the [`.env`](.env) file (_"changeme"_ by default). The first one is the
+> with the values of the passwords defined in the [`.env`](.env) file (_"elk4565"_ by default). The first one is the
 > [built-in superuser][builtin-users], the other two are used by Kibana and Logstash respectively to communicate with
 > Elasticsearch. This task is only performed during the _initial_ startup of the stack. To change users' passwords
 > _after_ they have been initialized, please refer to the instructions in the next section.
@@ -159,10 +159,10 @@ browser and use the following (default) credentials to log in:
 
 #### Setting up user authentication
 
-> **Note**  
+> **Note**
 > Refer to [Security settings in Elasticsearch][es-security] to disable authentication.
 
-The _"changeme"_ password set by default for all aforementioned users is **unsecure**. For increased security, we will
+The _"elk4565"_ password set by default for all aforementioned users is **unsecure**. For increased security, we will
 reset the passwords of all aforementioned Elasticsearch users to random secrets.
 
 1. Reset passwords for built-in users
@@ -183,7 +183,7 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
     Its value isn't used by any core component, but [extensions](#how-to-enable-the-provided-extensions) use it to
     connect to Elasticsearch.
 
-    > **Note**  
+    > **Note**
     > In case you don't plan on using any of the provided [extensions](#how-to-enable-the-provided-extensions), or
     > prefer to create your own roles and users to authenticate these services, it is safe to remove the
     > `ELASTIC_PASSWORD` entry from the `.env` file altogether after the stack has been initialized.
@@ -202,7 +202,7 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
     docker-compose up -d logstash kibana
     ```
 
-> **Note**  
+> **Note**
 > Learn more about the security of the Elastic stack at [Secure the Elastic Stack][sec-cluster].
 
 #### Injecting data
@@ -210,7 +210,7 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
 Launch the Kibana web UI by opening <http://localhost:5601> in a web browser, and use the following credentials to log
 in:
 
-* user: *elastic*
+* user: _elastic_
 * password: *\<your generated elastic password>*
 
 Now that the stack is fully configured, you can go ahead and inject some log entries.
@@ -235,7 +235,7 @@ When Kibana launches for the first time, it is not configured with any index pat
 
 ##### Via the Kibana web UI
 
-> **Note**  
+> **Note**
 > You need to inject data into Logstash before being able to configure a Logstash index pattern via the Kibana web UI.
 
 Navigate to the _Discover_ view of Kibana from the left sidebar. You will be prompted to create an index pattern. Enter
@@ -276,13 +276,13 @@ To use a different version of the core Elastic components, simply change the ver
 file. If you are upgrading an existing stack, remember to rebuild all container images using the `docker-compose build`
 command.
 
-> **Warning**  
+> **Warning**
 > Always pay attention to the [official upgrade instructions][upgrade] for each individual component before performing a
 > stack upgrade.
 
 ## Configuration
 
-> **Note**  
+> **Note**
 > Configuration is not dynamically reloaded, you will need to restart individual components after any configuration
 > change.
 
@@ -478,7 +478,6 @@ See the following Wiki pages:
 [compose-v2]: https://docs.docker.com/compose/compose-v2/
 [linux-postinstall]: https://docs.docker.com/engine/install/linux-postinstall/
 
-[bootstap-checks]: https://www.elastic.co/guide/en/elasticsearch/reference/7.17/bootstrap-checks.html
 [es-sys-config]: https://www.elastic.co/guide/en/elasticsearch/reference/7.17/system-config.html
 [es-heap]: https://www.elastic.co/guide/en/elasticsearch/reference/7.17/important-settings.html#heap-size-settings
 
@@ -501,4 +500,5 @@ See the following Wiki pages:
 [ls-docker]: https://www.elastic.co/guide/en/logstash/7.17/docker-config.html
 
 [upgrade]: https://www.elastic.co/guide/en/elasticsearch/reference/7.17/setup-upgrade.html
+
 # elk-docker-edition

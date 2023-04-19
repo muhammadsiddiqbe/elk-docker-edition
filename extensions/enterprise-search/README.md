@@ -31,7 +31,7 @@ secret_management.encryption_keys:
 secret_management.encryption_keys: [my_first_encryption_key, my_second_encryption_key, ...]
 ```
 
-> **Note**  
+> **Note**
 > To generate a strong random encryption key, you can use the OpenSSL utility or any other online/offline tool of your
 > choice:
 >
@@ -70,7 +70,7 @@ To include Enterprise Search in the stack, run Docker Compose from the root of t
 line argument referencing the `enterprise-search-compose.yml` file:
 
 ```console
-$ docker-compose -f docker-compose.yml -f extensions/enterprise-search/enterprise-search-compose.yml up
+docker-compose -f docker-compose.yml -f extensions/enterprise-search/enterprise-search-compose.yml up
 ```
 
 Allow a few minutes for the stack to start, then open your web browser at the address <http://localhost:3002> to see the
@@ -79,7 +79,7 @@ Enterprise Search home page.
 Enterprise Search is configured on first boot with the following default credentials:
 
 * user: *enterprise_search*
-* password: *changeme*
+* password: *elk4565*
 
 ## Security
 
@@ -96,7 +96,7 @@ enterprise-search:
     ENT_SEARCH_DEFAULT_PASSWORD: {{some strong password}}
 ```
 
-> **Warning**  
+> **Warning**
 > The default Enterprise Search password can only be set during the initial boot. Once the password is persisted in
 > Elasticsearch, it can only be changed via the Elasticsearch API.
 
@@ -120,7 +120,7 @@ enterprise-search:
 Any change to the Enterprise Search configuration requires a restart of the Enterprise Search container:
 
 ```console
-$ docker-compose -f docker-compose.yml -f extensions/enterprise-search/enterprise-search-compose.yml restart enterprise-search
+docker-compose -f docker-compose.yml -f extensions/enterprise-search/enterprise-search-compose.yml restart enterprise-search
 ```
 
 Please refer to the following documentation page for more details about how to configure Enterprise Search inside a
