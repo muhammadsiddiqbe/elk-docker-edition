@@ -1,25 +1,13 @@
 name: filebeat-host-elk
 
-filebeat.modules:
-  - module: nginx
-    access:
-      enabled: true
-      var.paths: ["/var/log/nginx/access.log*"]
-
-
-processors:
-  - decode_json_fields:
-      fields: ["message"]
-      target: ""
-      overwrite_keys: true
-      process_array: true
-      max_depth: 1
-      add_error_key: true
-  - dissect:
-      tokenizer: "%{nginx.access.remote_ip} %{ident} %{auth} [%{nginx.access.time_local}] \"%{http.request.method} %{uri} HTTP/%{http.version}\" %{nginx.access.response_status_code:int} %{nginx.access.body_bytes_sent:int} \"%{referrer}\" \"%{user_agent}\""
-      field: "message"
-      target_prefix: ""
-
+filebeat.inputs:
+- type: log
+  name: dev-operation-log
+  paths:
+    - /var/log/nginx/access.log
+  json.message_key: log
+  #json.keys_under_root: true
+  #json.add_error_key: true
 
 output.elasticsearch:
   hosts: [http://elasticsearch:9200]

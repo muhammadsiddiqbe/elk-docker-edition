@@ -16,7 +16,7 @@ services:
       - --strict.perms=false
     volumes:
       - ./extensions/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,Z
-      - /var/log:/var/log
+      - /var/log/nginx/access.log:/var/log/nginx/access.log
       - type: bind
         source: /var/lib/docker/containers
         target: /var/lib/docker/containers
